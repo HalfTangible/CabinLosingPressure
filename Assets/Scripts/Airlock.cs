@@ -43,6 +43,11 @@ public class Airlock : MonoBehaviour
 
     }
 
+    public void OpenAndClose()
+    {
+        sealedShut = !sealedShut; //Swaps between true and false
+    }
+
     void EqualizePressure()
     {
         float r1 = room1.pressure;
