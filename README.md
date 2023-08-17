@@ -22,7 +22,14 @@ Planned features:
   * Trust: If it falls low enough, the astronaut will collapse and be unable to act for a time.
   * Astronauts in a room when it gets hit will take damage and potentially die.
  
-Current blockers:
-  * Implement 2D navmesh
-    * Select and move astronauts on the mesh.
-  * Select doors and open/close them.
+Currently working on:
+  * Implement 2D navmesh (works)
+    * Select and move astronaut on the mesh. (works, speed and inertia might need adjustment)
+    * Add and move multiple astronauts at the same time. (only have one prefab, still need to select)
+      * Currently selecting the astronaut by a GameObjectFind which obv will not work for the game
+
+
+Known issues 8/17:
+  * All airlocks are currently open though they appear closed.
+  * Astronaut behavior is not defined.
+  * Astronaut behavior is not defined.

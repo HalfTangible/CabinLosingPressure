@@ -15,13 +15,14 @@ public class AstroController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        selectedObj = GameObject.Find("RedAstro");
     }
     
     // Update is called once per frame
     void Update()
     {
-
+        if (selectedObj == null)
+            UnityEngine.Debug.Log("Your mom.");
         //https://www.youtube.com/watch?v=mCIkCXz9mxI
 
         if (Input.GetMouseButtonDown(0)) //if left click
@@ -53,9 +54,14 @@ public class AstroController : MonoBehaviour
             
         }
 
-        if (Input.GetMouseButton(1)) //if right click
+        if (Input.GetMouseButtonDown(1)) //if right click
         {
             //Set selected astronaut's destination to these coordinates.
+            endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            UnityEngine.Debug.Log("Agent endPos: " + endPos);
+            Astronaut a = selectedObj.GetComponent<Astronaut>();
+            a.Walking(endPos);
+            UnityEngine.Debug.Log("Agent: " + a);
         }
 
 
