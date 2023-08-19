@@ -51,6 +51,10 @@ public class AstroController : MonoBehaviour
             UnityEngine.Debug.Log("startPos: " + startPos);
             UnityEngine.Debug.Log("endPos: " + endPos);
 
+            //Add all selected objects of type Astronaut
+            //If there aren't any, check if there's an overlap with a object of type airlock
+            //If there is, OpenOrClose().
+
             
         }
 

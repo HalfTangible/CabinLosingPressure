@@ -12,14 +12,34 @@ public class Airlock : MonoBehaviour
     Room room1;
     Room room2;
 
+    BoxCollider2D collider;
+    BoxCollider2D triggerCollider;
+
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        sealedShut = true;
 
         //get the scripts from room1obj and room2obj
+
         room1 = GetRoomScript(room1Obj);
         room2 = GetRoomScript(room2Obj);
+        animator = GetComponent<Animator>();
+        sealedShut = true;
+        BoxCollider2D[] c = GetComponents<BoxCollider2D>();
+        
+        //Find the collider that isn't a trigger (should only be 2 anyway
+
+        foreach (BoxCollider2D c2 in c)
+        {
+            if (c2.isTrigger == false)
+                collider = c2;
+            else
+                triggerCollider = c2;
+        }
+
+
     }
 
     Room GetRoomScript(GameObject theRoom)
@@ -30,22 +50,45 @@ public class Airlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //When the door is open, deactivate the collider/navmesh.
-        if(sealedShut)
-        {
-            //this.Collider2D.enabled?
-        }else if (!sealedShut)
+        //Pressure flows between the two rooms if the door isn't sealed
+        if (!sealedShut)
         {
             EqualizePressure();
-            //this.Collider2D.disabled?
         }
+
+        //If the airlock is damaged, then it cannot be sealed or opened properly
+
+        //When an astronaut is nearby and a button pressed the door opens
 
 
     }
 
-    public void OpenAndClose()
+    void OpenDoor()
     {
-        sealedShut = !sealedShut; //Swaps between true and false
+        animator.SetBool("Open", true);
+        sealedShut = false;
+        collider.enabled = true;
+    }
+
+    void CloseDoor()
+    {
+        animator.SetBool("Open", false);
+        sealedShut = true;
+        collider.enabled = true;
+    }
+
+    void DamagedDoor()
+    {
+        animator.SetBool("Damaged", true);
+        sealedShut = false;
+        collider.enabled = true;
+    }
+
+    void DoorRepaired()
+    {
+        animator.SetBool("Damaged", false);
+        sealedShut = true;
+        collider.enabled = true;
     }
 
     void EqualizePressure()
