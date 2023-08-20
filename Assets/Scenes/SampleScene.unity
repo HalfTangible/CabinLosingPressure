@@ -8068,7 +8068,7 @@ Transform:
   - {fileID: 640026231}
   - {fileID: 1505337734}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -8376,7 +8376,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &640026230
 GameObject:
@@ -8480,7 +8480,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &886155883
 MonoBehaviour:
@@ -9785,8 +9785,7 @@ Transform:
   m_LocalPosition: {x: 3.533996, y: -1.4927266, z: 0.43924773}
   m_LocalScale: {x: 3.898725, y: 2.6617, z: 2.6617}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1933971311}
+  m_Children: []
   m_Father: {fileID: 382249538}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11673,7 +11672,7 @@ GameObject:
   - component: {fileID: 1492998713}
   - component: {fileID: 1492998712}
   m_Layer: 0
-  m_Name: RedAstro
+  m_Name: AstroPrefab
   m_TagString: Astronaut
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12162,7 +12161,7 @@ Transform:
   - {fileID: 1235128313}
   - {fileID: 101739336}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1837263363
 GameObject:
@@ -12331,12 +12330,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933971308}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.97980744, y: 0.7589135, z: 0}
-  m_LocalScale: {x: 0.2564941, y: 0.48584834, z: 0.37569976}
+  m_LocalPosition: {x: -0.48999968, y: 0.5200002, z: 0}
+  m_LocalScale: {x: 1, y: 1.2931825, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1202018475}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1933971312
 BoxCollider2D:

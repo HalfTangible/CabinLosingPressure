@@ -6,8 +6,9 @@ public class AstroController : MonoBehaviour
 {
     private Camera mainCam;
     private Vector3 mousePos;
-    private GameObject selectedObj;
+    //private GameObject selectedObj;
 
+    List<Astronaut> selectedAstronauts;
 
     private Vector3 startPos;
     private Vector3 endPos;
@@ -15,18 +16,20 @@ public class AstroController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        selectedObj = GameObject.Find("RedAstro");
+        //selectedObj = GameObject.Find("RedAstro");
+        selectedAstronauts = new List<Astronaut>();
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (selectedObj == null)
-            UnityEngine.Debug.Log("Your mom.");
+        //if (selectedObj == null)
+        //    UnityEngine.Debug.Log("Your mom.");
         //https://www.youtube.com/watch?v=mCIkCXz9mxI
 
         if (Input.GetMouseButtonDown(0)) //if left click
         {
+            selectedAstronauts.Clear();
             //Cast a ray to whatever you're selecting
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //RaycastHit hit;
@@ -51,7 +54,21 @@ public class AstroController : MonoBehaviour
             UnityEngine.Debug.Log("startPos: " + startPos);
             UnityEngine.Debug.Log("endPos: " + endPos);
 
+            //Select all colliders within the space
+            Collider2D[] selectingUnits = Physics2D.OverlapAreaAll(startPos, endPos);
+            UnityEngine.Debug.Log("selectedUnits: " +  selectingUnits.Length);
             //Add all selected objects of type Astronaut
+            foreach (Collider2D unit in selectingUnits)
+            {
+             
+                Astronaut astroScript = unit.GetComponent<Astronaut>();
+                Airlock airlockScript = unit.GetComponent<Airlock>();
+
+                if (astroScript != null)
+                    selectedAstronauts.Add(astroScript);
+                else if (airlockScript != null && unit.isTrigger) //This way on doors it doesn't trigger twice because we have two colliders.
+                    airlockScript.TriggerDoor();   
+            }
             //If there aren't any, check if there's an overlap with a object of type airlock
             //If there is, OpenOrClose().
 
@@ -61,11 +78,19 @@ public class AstroController : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) //if right click
         {
             //Set selected astronaut's destination to these coordinates.
+            
             endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            UnityEngine.Debug.Log("Agent endPos: " + endPos);
+            UnityEngine.Debug.Log("endPos: " + endPos);
+            /*
             Astronaut a = selectedObj.GetComponent<Astronaut>();
             a.Walking(endPos);
-            UnityEngine.Debug.Log("Agent: " + a);
+            UnityEngine.Debug.Log("Agent: " + a);*/
+
+            foreach (Astronaut a in selectedAstronauts)
+            {
+                UnityEngine.Debug.Log("Setting agent endpoint: " + endPos);
+                a.Walking(endPos);
+            }
         }
 
 

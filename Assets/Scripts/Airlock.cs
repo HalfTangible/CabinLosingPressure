@@ -29,7 +29,7 @@ public class Airlock : MonoBehaviour
         sealedShut = true;
         BoxCollider2D[] c = GetComponents<BoxCollider2D>();
         
-        //Find the collider that isn't a trigger (should only be 2 anyway
+        //Find the collider that isn't a trigger (should only be 2)
 
         foreach (BoxCollider2D c2 in c)
         {
@@ -50,28 +50,55 @@ public class Airlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //Pressure flows between the two rooms if the door isn't sealed
         if (!sealedShut)
         {
             EqualizePressure();
         }
 
-        //If the airlock is damaged, then it cannot be sealed or opened properly
-
+        
         //When an astronaut is nearby and a button pressed the door opens
 
 
     }
 
+    public void TriggerDoor()
+    {
+
+        UnityEngine.Debug.Log("Trigger door");
+
+        bool isOpen = animator.GetBool("Open");
+        bool isDamaged = animator.GetBool("Damaged");
+
+        //If the airlock is damaged, then it cannot be sealed or opened properly
+        
+        if (isDamaged)
+            SendWarning();
+        else if (isOpen)
+            CloseDoor();
+        else if (!isOpen)
+            OpenDoor();
+
+    }
+
+    void SendWarning()
+    {
+        UnityEngine.Debug.Log("Door is damaged and cannot be opened.");
+
+    }
+
     void OpenDoor()
     {
+        UnityEngine.Debug.Log("Open door.");
         animator.SetBool("Open", true);
         sealedShut = false;
-        collider.enabled = true;
+        collider.enabled = false;
     }
 
     void CloseDoor()
     {
+        UnityEngine.Debug.Log("Close door.");
         animator.SetBool("Open", false);
         sealedShut = true;
         collider.enabled = true;
@@ -79,6 +106,8 @@ public class Airlock : MonoBehaviour
 
     void DamagedDoor()
     {
+
+        UnityEngine.Debug.Log("Door damaged.");
         animator.SetBool("Damaged", true);
         sealedShut = false;
         collider.enabled = true;
@@ -86,9 +115,9 @@ public class Airlock : MonoBehaviour
 
     void DoorRepaired()
     {
+        UnityEngine.Debug.Log("Door fully repaired.");
         animator.SetBool("Damaged", false);
-        sealedShut = true;
-        collider.enabled = true;
+        CloseDoor();
     }
 
     void EqualizePressure()
