@@ -29,6 +29,9 @@ public class AstroController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) //if left click
         {
+            foreach (Astronaut a in selectedAstronauts)
+                a.Deselect();
+
             selectedAstronauts.Clear();
             //Cast a ray to whatever you're selecting
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -65,7 +68,10 @@ public class AstroController : MonoBehaviour
                 Airlock airlockScript = unit.GetComponent<Airlock>();
 
                 if (astroScript != null)
+                {
                     selectedAstronauts.Add(astroScript);
+                    astroScript.Select();
+                }
                 else if (airlockScript != null && unit.isTrigger) //This way on doors it doesn't trigger twice because we have two colliders.
                     airlockScript.TriggerDoor();   
             }

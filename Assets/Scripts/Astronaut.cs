@@ -18,6 +18,8 @@ public class Astronaut : MonoBehaviour
 
     UnityEngine.AI.NavMeshAgent agent;
 
+    GameObject selectionIndicator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,8 @@ public class Astronaut : MonoBehaviour
         agent.updateRotation = false;
         //agent.updateUpAxis = false; //If we add this then the agent can't go up and down. Which is a problem because I NEED THEM TO BE ABLE TO DO SO.
 
-        
+        selectionIndicator = transform.Find("Indicator").gameObject;
+        Deselect();
 
         suitBreached = false;
         pressure = 1;
@@ -76,6 +79,21 @@ public class Astronaut : MonoBehaviour
 
 
         }
+    }
+
+    void SetSelected(bool visible)
+    {
+        selectionIndicator.SetActive(visible);
+    }
+
+    public void Select()
+    {
+        SetSelected(true);
+    }
+
+    public void Deselect()
+    {
+        SetSelected(false);
     }
 
     void Repair()
