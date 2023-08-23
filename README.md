@@ -36,3 +36,23 @@ Known issues 8/23:
   * Only one Astronaut and one door.
   * Astronauts do not have traits/conditions/etc
   * Astronaut animations are extremely limited and do not flip
+  * Airlocks
+    * AI Banks Door
+    * Emergency O2 Door
+    * Medbay Door
+    * Engine Room Door
+    * Maintenance Room Door
+    * Bottom left central door
+    * Bottom door
+    * Bridge door
+  * Rooms
+    * Bridge (far right)
+    * Life Support (big bottom right)
+    * Medbay (above life support, right)
+    * Maintenance (bottom left)
+    * AI banks (top left)
+    * Emergency O2 (above life support, left)
+    * Engine Room (far left)
+    * Center (center)
+    * CenterLeft (between engine room and maintenance room)
+    * Bottom
