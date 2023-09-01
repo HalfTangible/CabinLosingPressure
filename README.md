@@ -32,10 +32,11 @@ Planned features:
   * Trust: If it falls low enough, the astronaut will collapse and be unable to act for a time.
   * Astronauts in a room when it gets hit will take damage and potentially die.
 
-Known issues 8/23:
+Known issues 8/31:
   * Only one Astronaut and one door.
   * Astronauts do not have traits/conditions/etc
-  * Astronaut animations are extremely limited and do not flip
+  * Astronaut animations are limited
+  * Astronauts will stop at a sealed door even if their path does not require them to go through it
   * Airlocks
     * AI Banks Door
     * Emergency O2 Door
