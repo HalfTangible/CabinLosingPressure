@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Astronaut
   - Airlock
+  - Room
   layers:
   - Default
   - TransparentFX

@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Airlock : MonoBehaviour
 {
+    
     bool sealedShut;
-    public GameObject room1Obj;
+    GameObject room1Obj;
     public GameObject room2Obj;
 
     Room room1;
@@ -22,12 +23,13 @@ public class Airlock : MonoBehaviour
     {
 
         //get the scripts from room1obj and room2obj
-
+        room1Obj = transform.parent.gameObject;
         room1 = GetRoomScript(room1Obj);
         room2 = GetRoomScript(room2Obj);
         animator = GetComponent<Animator>();
         sealedShut = true;
         BoxCollider2D[] c = GetComponents<BoxCollider2D>();
+
         
         //Find the collider that isn't a trigger (should only be 2)
 
@@ -80,6 +82,11 @@ public class Airlock : MonoBehaviour
         else if (!isOpen)
             OpenDoor();
 
+    }
+
+    public bool CanWalkThrough()
+    {
+        return animator.GetBool("Open");
     }
 
     void SendWarning()
