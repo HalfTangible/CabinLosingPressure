@@ -8574,8 +8574,9 @@ GameObject:
   m_Component:
   - component: {fileID: 886155882}
   - component: {fileID: 886155883}
+  - component: {fileID: 886155884}
   m_Layer: 0
-  m_Name: AstronautManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8606,6 +8607,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c98b96d16c516d348907836292838913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &886155884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886155881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf60ac370932ff245bb696aee580cbd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1161277254
@@ -11894,6 +11907,50 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1298547955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1298547957}
+  - component: {fileID: 1298547956}
+  m_Layer: 0
+  m_Name: AsteroidPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1298547956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298547955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb94a9a0961369442849c066d026e6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1298547957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298547955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1050785, y: 0.940216, z: -10.636085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1505337734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5264989049776765948, guid: 9152815f37918d349bc9199b28c0aed6, type: 3}
