@@ -24,9 +24,9 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void hitByAsteroid()
+    public void hitByAsteroid(int dmg)
     {
-        damage += 1;
+        damage += dmg;
     }
 
     public void BeingRepaired(float repairSkill)
