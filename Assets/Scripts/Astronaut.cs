@@ -13,6 +13,7 @@ public class Astronaut : MonoBehaviour
     bool isPanicking;
     bool isMoving;
     float hDir;
+    float damage;
 
     Vector2 currentPos;
     Vector2 targetPos;
@@ -109,6 +110,11 @@ public class Astronaut : MonoBehaviour
     public void Deselect()
     {
         SetSelected(false);
+    }
+
+    public void Damage(float amount)
+    {
+        damage += amount;
     }
 
     void Repair()
