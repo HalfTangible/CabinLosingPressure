@@ -129,33 +129,39 @@ public class Airlock : MonoBehaviour
 
     void EqualizePressure()
     {
+        UnityEngine.Debug.Log("Equalizing pressure.");
+
         float r1 = room1.pressure;
         float r2 = room2.pressure;
 
         //The airlock will try to equalize the air pressure between the rooms it connects.
         if (r1 < r2)
         {
-            EqualizePressure(r1, r2);
+            EqualizePressure(ref room1.pressure, ref room2.pressure);
         }
         else if (r2 < r1)
-            EqualizePressure(r2, r1);
+            EqualizePressure(ref room2.pressure, ref room1.pressure);
     }
 
-    void EqualizePressure(float hasLess, float hasMore)
+    void EqualizePressure(ref float hasLess, ref float hasMore)
     {
         float c = Time.deltaTime;
         float toEqualize = (hasMore - hasLess) / 2;
+        UnityEngine.Debug.Log("r1 = " + hasLess + ", r2 = " + hasMore + ", toEqualize = " + toEqualize);
 
-        if (toEqualize < Time.deltaTime)
+        if (toEqualize < c)
         {
+            UnityEngine.Debug.Log("if1");
             //Take the difference, divide by 2, and make them equalize
             hasLess += toEqualize;
             hasMore -= toEqualize;
             
         }
         else {
-            hasLess += hasLess;
-            hasMore -= hasLess;
+            UnityEngine.Debug.Log("if2");
+            hasMore -= c;
+            hasLess += c;
+            
         }
         
 

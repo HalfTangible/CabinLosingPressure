@@ -6,6 +6,7 @@ public class Astronaut : MonoBehaviour
 {
     Room thisRoom; //Room the astronaut is in
     float pressure; //Pressure of space suit
+    float lungCapacity; //
     bool suitBreached;
     float repairSkill;
     bool haveTools;
@@ -38,6 +39,7 @@ public class Astronaut : MonoBehaviour
 
         suitBreached = false;
         pressure = 1;
+        lungCapacity = 1;
         repairSkill = 1;
         haveTools = false;
         canAct = true;
@@ -140,6 +142,12 @@ public class Astronaut : MonoBehaviour
         //Get the differences.
 
 
+    }
+
+    void Breathing()
+    {
+        //Constantly reduce air pressure of this suit as the astronaut breathes
+        pressure -= (Time.deltaTime / lungCapacity);
     }
 
     void Animate()
