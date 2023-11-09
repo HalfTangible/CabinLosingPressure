@@ -24,6 +24,9 @@ public class Astronaut : MonoBehaviour
 
     GameObject selectionIndicator;
 
+    public enum Status { isDead, isAlive, isDowned, isDying };
+    Status status;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,14 +48,15 @@ public class Astronaut : MonoBehaviour
         canAct = true;
         isPanicking = false;
         hDir = 0;
+        status = Status.isAlive;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         Animate();
-        
+
         /*
          if this astronaut overlaps with a closed door, the astronaut pauses.
 
@@ -60,6 +64,31 @@ public class Astronaut : MonoBehaviour
         agent.Resume();
          */
 
+        if (damage >= 5 || pressure <= 0)
+        {
+            status = Status.isDying;
+        }
+
+        switch(status)
+        {
+            case Status.isDying:
+                dies(); //This is a state that will be checked for each frame but once it's occurred is irreversible.
+                status = Status.isDead;
+                break;
+            case Status.isDead: //can be moved but cannot be saved
+                break;
+            case Status.isDowned:
+                break;
+            case Status.isAlive:
+                whileAlive();
+                break;
+        }
+
+
+    }
+
+    void whileAlive()
+    {
         transform.rotation = Quaternion.Euler(0, hDir, 0);
         //transform.rotation = new Vector3(0, 0, 0);
 
@@ -76,7 +105,7 @@ public class Astronaut : MonoBehaviour
         {
             canAct = false;
         }
-        else { canAct = true;}
+        else { canAct = true; }
 
 
         if (suitBreached)
@@ -88,15 +117,31 @@ public class Astronaut : MonoBehaviour
         if (canAct)
         {
 
-
-
             if (haveTools && thisRoom.IsDamaged())
             {
                 Repair();
             }
 
-
         }
+    }
+
+    void whileDown()
+    {
+
+    }
+
+    void dies()
+    {
+        //Tells the game manager to check if all Astronauts are dead. If so the game ends.
+    }
+
+    public bool isAlive()
+    {
+        if (status == Status.isAlive || status == Status.isDowned)
+            return true;
+        else
+            return false;
+            
     }
 
     void SetSelected(bool visible)
